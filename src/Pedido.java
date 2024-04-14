@@ -5,7 +5,7 @@ public class Pedido {
     private Estoque estoque = new Estoque();
     private Mouse mouse; 
     private PlacaVideo placavideo; 
-    private Teclado teclado; ok
+    private Teclado teclado; 
     private Ram memoriaRam[] = new Ram[2]; 
     private Gabinete gabinete; 
     private FonteAlimentacao fonte; 
