@@ -3,16 +3,16 @@ import java.util.Scanner;
 
 public class Pedido {
     private Estoque estoque = new Estoque();
-    private Mouse mouse; ok
-    private PlacaVideo placavideo; ok
+    private Mouse mouse; 
+    private PlacaVideo placavideo; 
     private Teclado teclado; ok
-    private MemoriaRam memoriaRam[] = new MemoriaRam[2]; ok
-    private Gabinete gabinete; ok
-    private FonteAlimentacao fonte; ok
+    private Ram memoriaRam[] = new Ram[2]; 
+    private Gabinete gabinete; 
+    private FonteAlimentacao fonte; 
     private Monitor monitor[] = new Monitor[2];
     private Fone fone;
-    private PlacaMae placaMae; ok
-    private Processador processador; ok
+    private PlacaMae placaMae; 
+    private Processador processador; 
 
 
     protected int cont = 0;
