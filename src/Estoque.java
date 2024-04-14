@@ -1,5 +1,5 @@
 public class Estoque {
-    private Processador[] processadores = {
+    private Processador[] processador = {
         new Processador("Ryzen 5 5600", "AMD", 788.98),
         new Processador("Ryzen 7 8700g", "AMD", 1899.99),
         new Processador("Ryzen 9 5900x", "AMD", 2229.90),
@@ -8,7 +8,7 @@ public class Estoque {
         new Processador("Core i9 12900", "Intel", 2589.00)
     };
 
-    private PlacaMae[] placasMae = {
+    private PlacaMae[] placaMae = {
         new PlacaMae("B550M", "Gigabyte", 599.99),
         new PlacaMae("A620M", "Asus", 699.99),
         new PlacaMae("X570-Plus", "Asus", 1799.99),
@@ -18,197 +18,198 @@ public class Estoque {
     };
     
     private Ram[] memoriaRAM = {
-        new MemoriaRAM("Fury", "Kingston", 159.99,"DDR4"),
-        new MemoriaRAM("Vengeance", "Corsair", 269.99,"DDR5")
+        new Ram("Fury", "Kingston", 159.99,"DDR4"),
+        new Ram("Vengeance", "Corsair", 269.99,"DDR5")
     };
 
-    private PlacaVideo[] placasDeVideo = {
-        new PlacaVideo("Geforce RTX 3060", "Gigabyte", 1659.99),
-        new PlacaVideo("Geforce GTX 1650", "MSI", 914.00),
-        new PlacaVideo("Radeon RX 6600", "ASRock", 1299.99),
-        new PlacaVideo("Radeon RX 580", "Sapphire", 559.00)        
-    };
-    
-    private Armazenamento[] armazenamentos = {
-        new Armazenamento("SSD", "970 EVO Plus", "Samsung", 459.00),
-        new Armazenamento("HDD", "WD Blue", "Western Digital", 229.99)
+    private PlacaVideo[] placaDeVideo = {
+        new PlacaVideo("Geforce RTX 3060", "Gigabyte", 1659.99,"12GB"),
+        new PlacaVideo("Geforce GTX 1650", "MSI", 914.00,"4GB"),
+        new PlacaVideo("Radeon RX 6600", "ASRock", 1299.99,"8GB"),
+        new PlacaVideo("Radeon RX 580", "Sapphire", 559.00,"12GB")        
     };
     
-    private Fonte[] fontes = {
-        new Fonte("CX-750M", "Corsair", 649.99),
-        new Fonte("MAG-A650BN", "MSI", 279.99)
-    };
-
-    private Gabinete[] gabinetes = {
-        new Gabinete("Wave", "Rise Mode", 199.90),
-        new Gabinete("Grapple", "Redragon", 239.90),
-        new Gabinete("Cyclops", "DeepCool", 599.99)
+    private Armazenamento[] armazenamento = {
+        new Armazenamento("SSD", "Samsung",459.00,256,"970 EVO Plus"),
+        new Armazenamento("HDD", "Western Digital",229.99,1000,"HD Blue")
     };
     
-    private Mouse[] mouses = {
-        new Mouse("Cobra", "Redragon", 119.99),
-        new Mouse("G Pro Wireless", "Logitech", 599.99),
-        new Mouse("Deathadder v2", "Razer", 270.94)
+    private FonteAlimentacao[] fonte = {
+        new FonteAlimentacao("CX-750M", "Corsair", 649.99),
+        new FonteAlimentacao("MAG-A650BN", "MSI", 279.99)
+    };
+
+    private Gabinete[] gabinete = {
+        new Gabinete("Wave", "Rise Mode", 199.90,"Galaxy Glass M"),
+        new Gabinete("Grapple", "Redragon", 239.90,"Grapple RGB "),
+        new Gabinete("Cyclops", "DeepCool", 599.99,"Mid Tower")
     };
     
-    private Teclado[] teclados = {
-        new Teclado("G512 Carbon", "Logitech", 549.99),
-        new Teclado("Bora", "T-Dagger", 189.99),
-        new Teclado("Alloy", "HyperX", 499.99)
+    private Mouse[] mouse = {
+        new Mouse("Cobra", "Redragon", 119.99,"Sem fio",true),
+        new Mouse("G Pro Wireless", "Logitech", 599.99,"Sem fio",false),
+        new Mouse("Deathadder v2", "Razer", 270.94,"Com fio",false),
+    };
+    
+    private Teclado[] teclado = {
+        new Teclado("G512 Carbon", "Logitech", 549.99,"Com fio",false),
+        new Teclado("Bora", "T-Dagger", 189.99,"Com fio",true),
+        new Teclado("Alloy", "HyperX", 499.99,"Com fio",true)
     };
 
-    private Fone[] fones = {
-        new Fone("G335", "Logitech", 399.99),
-        new Fone("Zeus X", "Redragon", 249.99),
-        new Fone("Kraken", "Razer", 169.99)
+    private Fone[] fone = {
+        new Fone("G335", "Logitech", 399.99,"Com fio",false),
+        new Fone("Zeus X", "Redragon", 249.99,"Com fio",true),
+        new Fone("Kraken", "Razer", 169.99,"Com fio",false)
     };
 
-    private Monitor[] monitores = {
-        new Monitor("Monitor 24'", "Dell", 999.99),
-        new Monitor("UltraGear", "LG", 1263.15),
-        new Monitor("Hero", "AOC", 899.10)
+    private Monitor[] monitor = {
+        new Monitor("Monitor 24'", "Dell", 999.99,2.7,2,75),
+        new Monitor("UltraGear", "LG", 1263.15,19,10,144),
+        new Monitor("Hero", "AOC", 899.10,32,21.2,144)
     };
 
-    public Processador getProcessadores(int num) {
-        return processadores[num];
+    public Processador getProcessador(int num) {
+        return processador[num];
     }
 
-    public PlacaMae getPlacasMae(int num) {
-        return placasMae[num];
+    public PlacaMae getPlacaMae(int num) {
+        return placaMae[num];
     }
 
-    public Ram getMemoriasRAM(int num) {
-        return memoriasRAM[num];
+    public Ram getMemoriaRAM(int num) {
+        return memoriaRAM[num];
     }
 
-    public PlacaVideo getPlacasDeVideo(int num) {
-        return placasDeVideo[num];
+    public PlacaVideo getPlacaDeVideo(int num) {
+        return placaDeVideo[num];
     }
 
-    public Armazenamento getArmazenamentos(int num) {
-        return armazenamentos[num];
+    public Armazenamento getArmazenamento(int num) {
+        return armazenamento[num];
     }
 
-    public Fonte getFontes(int num) {
-        return fontes[num];
+    public FonteAlimentacao getFonte(int num) {
+        return fonte[num];
     }
 
-    public Gabinete getGabinetes(int num) {
-        return gabinetes[num];
+    public Gabinete getGabinete(int num) {
+        return gabinete[num];
     }
 
-    public Mouse getMouses(int num) {
+    public Mouse getMouse(int num) {
         return mouse[num];
     }
 
-    public Teclado getTeclados(int num) {
-        return teclados[num];
+    public Teclado getTeclado(int num) {
+        return teclado[num];
     }
 
-    public Fone getFones(int num) {
-        return fones[num];
+    public Fone getFone(int num) {
+        return fone[num];
     }
 
-    public Monitor getMonitores(int num) {
-        return monitores[num];
+    public Monitor getMonitor(int num) {
+        return monitor[num];
     }
 
     public void catalogoProcessadores() {
         System.out.println("Processadores:");
         System.out.println();
-        for (int i = 0; i < processadores.length; i++) {
+        for (int i = 0; i < processador.length; i++) {
             System.out.println(
-                processadores[i].getNome() + " - " + processadores[i].getMarca() + " = " + processadores[i].getPreco());
+                processador[i].getNome() + " - " + processador[i].getMarca() + " = " + processador[i].getPreco());
         }
     }
 
     public void catalogoPlacasMae() {
         System.out.println("Placas Mãe:");
         System.out.println();
-        for (int i = 0; i < placasMae.length; i++) {
+        for (int i = 0; i < placaMae.length; i++) {
             System.out.println(
-                placasMae[i].getNome() + " - " + placasMae[i].getMarca() + " = " + placasMae[i].getPreco());
+                placaMae[i].getNome() + " - " + placaMae[i].getMarca() + " = " + placaMae[i].getPreco());
         }
     }
     
     public void catalogoMemoriasRAM() {
         System.out.println("Memórias RAM:");
         System.out.println();
-        for (int i = 0; i < memoriasRAM.length; i++) {
+        for (int i = 0; i < memoriaRAM.length; i++) {
             System.out.println(
-                memoriasRAM[i].getNome() + " - " + memoriasRAM[i].getMarca() + " = " + memoriasRAM[i].getPreco());
+                memoriaRAM[i].getNome() + " - " + memoriaRAM[i].getMarca() + " = " + memoriaRAM[i].getPreco());
         }
     }
 
     public void catalogoPlacasDeVideo() {
         System.out.println("Placas De Vídeo:");
         System.out.println();
-        for (int i = 0; i < placasDeVideo.length; i++) {
+        for (int i = 0; i < placaDeVideo.length; i++) {
             System.out.println(
-                placasDeVideo[i].getNome() + " - " + placasDeVideo[i].getMarca() + " = " + placasDeVideo[i].getPreco());
+                placaDeVideo[i].getNome() + " - " + placaDeVideo[i].getMarca() + " = " + placaDeVideo[i].getPreco());
         }
     }
     
     public void catalogoArmazenamentos() {
         System.out.println("Armazenamentos:");
         System.out.println();
-        for (int i = 0; i < armazenamentos.length; i++) {
+        for (int i = 0; i < armazenamento.length; i++) {
             System.out.println(
-                armazenamentos[i].getTipo() + " " + armazenamentos[i].getModelo() + " - " + armazenamentos[i].getMarca() + " = " + armazenamentos[i].getPreco());
+                armazenamento[i].getNome() + " " + armazenamento[i].getModelo() + " - " + armazenamento[i].getMarca() + " = " + armazenamento[i].getPreco());
         }
     }
     
     public void catalogoFontes() {
         System.out.println("Fontes:");
         System.out.println();
-        for (int i = 0; i < fontes.length; i++) {
+        for (int i = 0; i < fonte.length; i++) {
             System.out.println(
-                fontes[i].getModelo() + " - " + fontes[i].getMarca() + " = " + fontes[i].getPreco());
+                fonte[i].getNome() + " - " + fonte[i].getMarca() + " = " + fonte[i].getPreco());
         }
     }
 
     public void catalogoGabinetes() {
         System.out.println("Gabinetes:");
         System.out.println();
-        for (int i = 0; i < gabinetes.length; i++) {
+        for (int i = 0; i < gabinete.length; i++) {
             System.out.println(
-                gabinetes[i].getNome() + " - " + gabinetes[i].getMarca() + " = " + gabinetes[i].getPreco());
+                gabinete[i].getNome() + " - " + gabinete[i].getMarca() + " = " + gabinete[i].getPreco());
         }
     }
     
     public void catalogoMouses() {
         System.out.println("Mouses:");
         System.out.println();
-        for (int i = 0; i < mouses.length; i++) {
+        for (int i = 0; i < mouse.length; i++) {
             System.out.println(
-                mouses[i].getNome() + " - " + mouses[i].getMarca() + " = " + mouses[i].getPreco());
+                mouse[i].getNome() + " - " + mouse[i].getMarca() + " = " + mouse[i].getPreco());
         }
     }
     
     public void catalogoTeclados() {
         System.out.println("Teclados:");
         System.out.println();
-        for (int i = 0; i < teclados.length; i++) {
+        for (int i = 0; i < teclado.length; i++) {
             System.out.println(
-                teclados[i].getNome() + " - " + teclados[i].getMarca() + " = " + teclados[i].getPreco());
+                teclado[i].getNome() + " - " + teclado[i].getMarca() + " = " + teclado[i].getPreco());
         }
     }
 
     public void catalogoFones() {
         System.out.println("Fones:");
         System.out.println();
-        for (int i = 0; i < fones.length; i++) {
+        for (int i = 0; i < fone.length; i++) {
             System.out.println(
-                fones[i].getNome() + " - " + fones[i].getMarca() + " = " + fones[i].getPreco());
+                fone[i].getNome() + " - " + fone[i].getMarca() + " = " + fone[i].getPreco());
         }
     }
 
     public void catalogoMonitores() {
         System.out.println("Monitores:");
         System.out.println();
-        for (int i = 0; i < monitores.length; i++) {
+        for (int i = 0; i < monitor.length; i++) {
             System.out.println(
-                monitores[i].getNome() + " - " + monitores[i].getMarca() + " = " + monitores[i].getPreco());
+                monitor[i].getNome() + " - " + monitor[i].getMarca() + " = " + monitor[i].getPreco());
         }
     }
 }
+

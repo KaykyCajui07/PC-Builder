@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 
 public class Pedido {
     private Estoque estoque = new Estoque();
@@ -34,7 +32,7 @@ public class Pedido {
     public void addPlacaVideo (int num) {
         
         if(this.placavideo == null) {
-            this.placavideo = estoque.getPlacadeVideo(num-1);
+            this.placavideo = estoque.getPlacaDeVideo(num-1);
             
         }else {
             System.out.println("Não é possivel adicionar mais produtos.");
@@ -72,11 +70,11 @@ public class Pedido {
 
     public void addMemoriaRam(int num){
         if(this.memoriaRam[0] == null){
-            this.memoriaRam[0] = estoque.getMemoriaRam(num-1);
+            this.memoriaRam[0] = estoque.getMemoriaRAM(num-1);
 
         }
         else if(this.memoriaRam[1] == null){
-            this.memoriaRam[1] = estoque.getMemoriaRam(num-1);
+            this.memoriaRam[1] = estoque.getMemoriaRAM(num-1);
         }
         else{
             System.out.println("Não é possivel adicionar mais produtos");
@@ -94,10 +92,10 @@ public class Pedido {
 
     public void addMonitor(int num){
         if(this.monitor[0] == null){
-            this.monitor = estoque.getMonitor(num-1);
+            this.monitor[0] = estoque.getMonitor(num-1);
         }
         else if(this.monitor[1] == null){
-            this.monitor = estoque.getMouse(num - 1);
+            this.monitor[1] = estoque.getMonitor(num - 1);
         }
         else{
             System.out.println("Não é possivel adicionar mais produtos");
@@ -106,14 +104,14 @@ public class Pedido {
 
     public void addFonteAlimentacao(int num){
         if(this.fonte == null){
-            this.fonte = estoque.getFonteAlimentacao(num-1);
+            this.fonte = estoque.getFonte(num-1);
         }
         else{
             System.out.println("Não é possivel adicionar mais produtos");
         }
     }
 
-    public addFone(int num){
+    public void addFone(int num){
         if(this.fone == null){
             this.fone = estoque.getFone(num - 1);
         }
