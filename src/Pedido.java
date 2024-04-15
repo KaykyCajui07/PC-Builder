@@ -6,17 +6,76 @@ public class Pedido {
     private Teclado teclado; 
     private Ram memoriaRam[] = new Ram[2]; 
     private Gabinete gabinete; 
-    private FonteAlimentacao fonte; 
+    private FonteAlimentacao fonte;
     private Monitor monitor[] = new Monitor[2];
     private Fone fone;
     private PlacaMae placaMae; 
     private Processador processador; 
+    private Armazenamento armazenamento;
+
+
+    public Estoque getEstoque() {
+        return estoque;
+    }
+
+    public Mouse getMouse() {
+        return mouse;
+    }
+
+    public PlacaVideo getPlacavideo() {
+        return placavideo;
+    }
+
+    public Teclado getTeclado() {
+        return teclado;
+    }
+
+    public Ram getMemoriaRam(int num) {
+        return memoriaRam[num];
+    }
+
+    public Gabinete getGabinete() {
+        return gabinete;
+    }
+
+    public FonteAlimentacao getFonte() {
+        return fonte;
+    }
+
+    public Monitor getMonitor(int num) {
+        return monitor[num];
+    }
+
+    public Fone getFone() {
+        return fone;
+    }
+
+    public PlacaMae getPlacaMae() {
+        return placaMae;
+    }
+
+    public Processador getProcessador() {
+        return processador;
+    }
+
+    public int getCont() {
+        return cont;
+    }
 
 
     protected int cont = 0;
 
     public Pedido() {
       
+    }
+
+    public void addArmazenamento(int num){
+        if(this.armazenamento == null){
+            this.armazenamento = estoque.getArmazenamento(num-1);
+        }
+        else{
+            System.out.println("Não foi possivel adicionar mais produtos");
+        }
     }
     
     public void addMouse (int num) {
@@ -102,7 +161,7 @@ public class Pedido {
         }
     }
 
-    public void addFonteAlimentacao(int num){
+    public void addFonte(int num){
         if(this.fonte == null){
             this.fonte = estoque.getFonte(num-1);
         }
@@ -122,7 +181,9 @@ public class Pedido {
     
     public double calculoTotal() {
         double total=0;
-        total  = this.mouse.getPreco() + this.placavideo.getPreco();
+        total  = this.mouse.getPreco() + this.placavideo.getPreco() + this.fone.getPreco() + this.fonte.getPreco() + this.monitor[0].getPreco()
+                 + this.monitor[1].getPreco() + this.gabinete.getPreco() + this.memoriaRam[0].getPreco() + this.memoriaRam[1].getPreco()
+                 + this.placaMae.getPreco() + this.processador.getPreco() + this.teclado.getPreco();
         return total;
     }
     
@@ -134,10 +195,7 @@ public class Pedido {
     public void notaFiscal(int formaPagar) {
         System.out.println("Nota Fiscal:");
         System.out.println();
-        System.out.println(this.mouse.getNome()+ "("+this.mouse.getMarca()+") = R$ "+this.mouse.getPreco());
-        System.out.println(this.placavideo.getNome()+"("+this.placavideo.getMarca()+") = R$ "+this.placavideo.getPreco());
-        
-
+        System.out.println(this.processador.getNome()+" - "+this.processador.getMarca()+" = R$ "+this.processador.getPreco());
         double total= calculoTotal();
         
         switch (formaPagar) {
