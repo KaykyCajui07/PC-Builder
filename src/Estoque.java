@@ -137,7 +137,7 @@ public class Estoque {
     public void catalogoPlacasMaeIntel() {
         System.out.println("Placas Mãe:");
         System.out.println();
-        for (int i = 3; i <= placaMae.length; i++) {
+        for (int i = 3; i < placaMae.length; i++) {
                 System.out.println(
                    i+1 +" - " + this.placaMae[i].getNome() + " - " + this.placaMae[i].getMarca() + " = " + this.placaMae[i].getPreco());
             
