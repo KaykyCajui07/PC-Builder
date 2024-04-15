@@ -40,14 +40,15 @@ public class Main {
                 if (pedido.getPlacaMae().getNome() == "Asus A620M"
                         || pedido.getPlacaMae().getNome() == "Gigabyte B760M") {
                     estoque.catalogoMemoriasRAMDDR5();
+                    opcao = input.nextInt();
+                    pedido.addMemoriaRam(opcao);
 
                 } else {
                     estoque.catalogoMemoriasRAMDDR4();
+                    opcao = input.nextInt();
+                    pedido.addMemoriaRam(opcao);
 
                 }
-                opcao = input.nextInt();
-                pedido.addMemoriaRam(opcao);
-
             }
             
             System.out.println("Escolha a Placa De Video");

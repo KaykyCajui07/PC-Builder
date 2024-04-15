@@ -120,7 +120,7 @@ public class Estoque {
         System.out.println();
         for (int i = 0; i < processador.length; i++) {
             System.out.println(
-                processador[i].getNome() + " - " + processador[i].getMarca() + " = " + processador[i].getPreco());
+                i+1+" - "+  this.processador[i].getNome() + " - " + this.processador[i].getMarca() + " = " + this.processador[i].getPreco());
         }
     }
 
@@ -129,7 +129,7 @@ public class Estoque {
         System.out.println();
         for (int i = 0; i <= 2; i++) {
                 System.out.println(
-                    placaMae[i].getNome() + " - " + placaMae[i].getMarca() + " = " + placaMae[i].getPreco());
+                    i+1+" - " +  this.placaMae[i].getNome() + " - " + this.placaMae[i].getMarca() + " = " + this.placaMae[i].getPreco());
             
          }
     }
@@ -139,7 +139,7 @@ public class Estoque {
         System.out.println();
         for (int i = 3; i <= placaMae.length; i++) {
                 System.out.println(
-                    placaMae[i].getNome() + " - " + placaMae[i].getMarca() + " = " + placaMae[i].getPreco());
+                   i+1 +" - " + this.placaMae[i].getNome() + " - " + this.placaMae[i].getMarca() + " = " + this.placaMae[i].getPreco());
             
          }
     }
@@ -151,14 +151,14 @@ public class Estoque {
     public void catalogoMemoriasRAMDDR5() {
         System.out.println("Memórias RAM:");
         System.out.println();
-        System.out.println("1 - "+memoriaRAM[1].getNome() + " - " + memoriaRAM[1].getMarca() + " = " + memoriaRAM[1].getPreco());
+        System.out.println("2 - "+this.memoriaRAM[1].getNome() + " - " + this.memoriaRAM[1].getMarca() + " = " + this.memoriaRAM[1].getPreco());
 
     }
 
     public void catalogoMemoriasRAMDDR4() {
         System.out.println("Memórias RAM:");
         System.out.println();
-        System.out.println("0 - "+memoriaRAM[0].getNome() + " - " + memoriaRAM[0].getMarca() + " = " + memoriaRAM[0].getPreco());
+        System.out.println("1 - "+this.memoriaRAM[0].getNome() + " - " + this.memoriaRAM[0].getMarca() + " = " + this.memoriaRAM[0].getPreco());
     
 
     }
@@ -167,7 +167,7 @@ public class Estoque {
         System.out.println();
         for (int i = 0; i < placaDeVideo.length; i++) {
             System.out.println(
-                placaDeVideo[i].getNome() + " - " + placaDeVideo[i].getMarca() + " = " + placaDeVideo[i].getPreco());
+                i+1+" - "+ this.placaDeVideo[i].getNome() + " - " + this.placaDeVideo[i].getMarca() + " = " + this.placaDeVideo[i].getPreco());
         }
     }
     
@@ -176,7 +176,7 @@ public class Estoque {
         System.out.println();
         for (int i = 0; i < armazenamento.length; i++) {
             System.out.println(
-                armazenamento[i].getNome() + " " + armazenamento[i].getModelo() + " - " + armazenamento[i].getMarca() + " = " + armazenamento[i].getPreco());
+                i+1+" - "+ this.armazenamento[i].getNome() + " " + this.armazenamento[i].getModelo() + " - " + this.armazenamento[i].getMarca() + " = " + this.armazenamento[i].getPreco());
         }
     }
     
@@ -185,7 +185,7 @@ public class Estoque {
         System.out.println();
         for (int i = 0; i < fonte.length; i++) {
             System.out.println(
-                fonte[i].getNome() + " - " + fonte[i].getMarca() + " = " + fonte[i].getPreco());
+                i+1+" - " + fonte[i].getNome() + " - " + fonte[i].getMarca() + " = " + fonte[i].getPreco());
         }
     }
 
@@ -194,7 +194,7 @@ public class Estoque {
         System.out.println();
         for (int i = 0; i < gabinete.length; i++) {
             System.out.println(
-                gabinete[i].getNome() + " - " + gabinete[i].getMarca() + " = " + gabinete[i].getPreco());
+                i+1+" - "+this.gabinete[i].getNome() + " - " + this.gabinete[i].getMarca() + " = " + this.gabinete[i].getPreco());
         }
     }
     
@@ -203,16 +203,16 @@ public class Estoque {
         System.out.println();
         for (int i = 0; i < mouse.length; i++) {
             System.out.println(
-                mouse[i].getNome() + " - " + mouse[i].getMarca() + " = " + mouse[i].getPreco());
+                i+1+" - "+ this.mouse[i].getNome() + " - " + this.mouse[i].getMarca() + " = " + this.mouse[i].getPreco());
         }
     }
     
     public void catalogoTeclados() {
         System.out.println("Teclados:");
         System.out.println();
-        for (int i = 0; i < teclado.length; i++) {
+        for (int i = 0; i < this.teclado.length; i++) {
             System.out.println(
-                teclado[i].getNome() + " - " + teclado[i].getMarca() + " = " + teclado[i].getPreco());
+                i+1+" - "+  this.teclado[i].getNome() + " - " + this.teclado[i].getMarca() + " = " + this.teclado[i].getPreco());
         }
     }
 
@@ -221,16 +221,16 @@ public class Estoque {
         System.out.println();
         for (int i = 0; i < fone.length; i++) {
             System.out.println(
-                fone[i].getNome() + " - " + fone[i].getMarca() + " = " + fone[i].getPreco());
+                i+1+" - "+  this.fone[i].getNome() + " - " + this.fone[i].getMarca() + " = " + this.fone[i].getPreco());
         }
     }
 
     public void catalogoMonitores() {
         System.out.println("Monitores:");
         System.out.println();
-        for (int i = 0; i < monitor.length; i++) {
+        for (int i = 0; i < this.monitor.length; i++) {
             System.out.println(
-                monitor[i].getNome() + " - " + monitor[i].getMarca() + " = " + monitor[i].getPreco());
+                i+1 +" - "+   this.monitor[i].getNome() + " - " + this.monitor[i].getMarca() + " = " + this.monitor[i].getPreco());
         }
     }
 }
