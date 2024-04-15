@@ -9,12 +9,14 @@ public class Estoque {
     };
 
     private PlacaMae[] placaMae = {
-        new PlacaMae("B550M", "Gigabyte", 599.99),
-        new PlacaMae("A620M", "Asus", 699.99),
-        new PlacaMae("X570-Plus", "Asus", 1799.99),
-        new PlacaMae("H610M", "MSI", 575.00),
-        new PlacaMae("H310M", "ASRock", 299.00),
-        new PlacaMae("B760M", "Gigabyte", 1085.43)
+        new PlacaMae("Gigabyte B550M ", "AMD", 599.99),
+        new PlacaMae("Asus A620M", "AMD", 699.99),
+        new PlacaMae("Asus X570-Plus", "AMD", 1799.99),
+        new PlacaMae("MSI H610M", "Intel", 575.00),
+        new PlacaMae("Gigabyte B760M", "Intel", 1085.43),
+        new PlacaMae("ASRock H310M", "Intel", 299.00),
+       
+      
     };
     
     private Ram[] memoriaRAM = {
@@ -35,8 +37,8 @@ public class Estoque {
     };
     
     private FonteAlimentacao[] fonte = {
-        new FonteAlimentacao("CX-750M", "Corsair", 649.99),
-        new FonteAlimentacao("MAG-A650BN", "MSI", 279.99)
+        new FonteAlimentacao("CX-750M", "Corsair", 649.99,750),
+        new FonteAlimentacao("MAG-A650BN", "MSI", 279.99,650)
     };
 
     private Gabinete[] gabinete = {
@@ -122,24 +124,44 @@ public class Estoque {
         }
     }
 
-    public void catalogoPlacasMae() {
+    public void catalogoPlacasMaeAMD() {
         System.out.println("Placas Mãe:");
         System.out.println();
-        for (int i = 0; i < placaMae.length; i++) {
-            System.out.println(
-                placaMae[i].getNome() + " - " + placaMae[i].getMarca() + " = " + placaMae[i].getPreco());
-        }
-    }
-    
-    public void catalogoMemoriasRAM() {
-        System.out.println("Memórias RAM:");
-        System.out.println();
-        for (int i = 0; i < memoriaRAM.length; i++) {
-            System.out.println(
-                memoriaRAM[i].getNome() + " - " + memoriaRAM[i].getMarca() + " = " + memoriaRAM[i].getPreco());
-        }
+        for (int i = 0; i <= 2; i++) {
+                System.out.println(
+                    placaMae[i].getNome() + " - " + placaMae[i].getMarca() + " = " + placaMae[i].getPreco());
+            
+         }
     }
 
+    public void catalogoPlacasMaeIntel() {
+        System.out.println("Placas Mãe:");
+        System.out.println();
+        for (int i = 3; i <= placaMae.length; i++) {
+                System.out.println(
+                    placaMae[i].getNome() + " - " + placaMae[i].getMarca() + " = " + placaMae[i].getPreco());
+            
+         }
+    }
+
+
+    
+
+    
+    public void catalogoMemoriasRAMDDR5() {
+        System.out.println("Memórias RAM:");
+        System.out.println();
+        System.out.println("1 - "+memoriaRAM[1].getNome() + " - " + memoriaRAM[1].getMarca() + " = " + memoriaRAM[1].getPreco());
+
+    }
+
+    public void catalogoMemoriasRAMDDR4() {
+        System.out.println("Memórias RAM:");
+        System.out.println();
+        System.out.println("0 - "+memoriaRAM[0].getNome() + " - " + memoriaRAM[0].getMarca() + " = " + memoriaRAM[0].getPreco());
+    
+
+    }
     public void catalogoPlacasDeVideo() {
         System.out.println("Placas De Vídeo:");
         System.out.println();
