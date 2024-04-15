@@ -181,7 +181,9 @@ public class Pedido {
     
     public double calculoTotal() {
         double total=0;
-        total  = this.mouse.getPreco() + this.placavideo.getPreco();
+        total  = this.mouse.getPreco() + this.placavideo.getPreco() + this.fone.getPreco() + this.fonte.getPreco() + this.monitor[0].getPreco()
+                 + this.monitor[1].getPreco() + this.gabinete.getPreco() + this.memoriaRam[0].getPreco() + this.memoriaRam[1].getPreco()
+                 + this.placaMae.getPreco() + this.processador.getPreco() + this.teclado.getPreco();
         return total;
     }
     
