@@ -6,7 +6,7 @@ public class Pedido {
     private Teclado teclado; 
     private Ram memoriaRam[] = new Ram[2]; 
     private Gabinete gabinete; 
-    private FonteAlimentacao fonte; 
+    private FonteAlimentacao fonte;
     private Monitor monitor[] = new Monitor[2];
     private Fone fone;
     private PlacaMae placaMae; 
@@ -161,7 +161,7 @@ public class Pedido {
         }
     }
 
-    public void addFonteAlimentacao(int num){
+    public void addFonte(int num){
         if(this.fonte == null){
             this.fonte = estoque.getFonte(num-1);
         }
@@ -193,8 +193,7 @@ public class Pedido {
     public void notaFiscal(int formaPagar) {
         System.out.println("Nota Fiscal:");
         System.out.println();
-        System.out.println();
-
+        System.out.println(this.processador.getNome()+" - "+this.processador.getMarca()+" = R$ "+this.processador.getPreco());
         double total= calculoTotal();
         
         switch (formaPagar) {

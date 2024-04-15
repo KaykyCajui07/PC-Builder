@@ -64,7 +64,7 @@ public class Main {
             System.out.println("Escolha a Fonte De Alimentacao: ");
             estoque.catalogoFontes();
             opcao = input.nextInt();
-            pedido.addArmazenamento(opcao);
+            pedido.addFonte(opcao);
 
             System.out.println("Escolha o Gabinte: ");
             estoque.catalogoGabinetes();
