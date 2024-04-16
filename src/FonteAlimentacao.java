@@ -3,9 +3,5 @@ public class FonteAlimentacao extends Produtos {
 	public FonteAlimentacao(String nome, String marca, double preco,int potencia ) {
 		super(nome, marca, preco);
 		this.potencia = potencia;
-
 	}
-
-	
-
 }

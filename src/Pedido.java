@@ -181,9 +181,23 @@ public class Pedido {
     
     public double calculoTotal() {
         double total=0;
-        total  = this.mouse.getPreco() + this.placavideo.getPreco() + this.fone.getPreco() + this.fonte.getPreco() + this.monitor[0].getPreco()
-                 + this.monitor[1].getPreco() + this.gabinete.getPreco() + this.memoriaRam[0].getPreco() + this.memoriaRam[1].getPreco()
-                 + this.placaMae.getPreco() + this.processador.getPreco() + this.teclado.getPreco();
+        total  = this.placavideo.getPreco() + this.fonte.getPreco() + this.gabinete.getPreco() + this.memoriaRam[0].getPreco() + 
+                 this.memoriaRam[1].getPreco() + this.placaMae.getPreco() + this.processador.getPreco() + this.armazenamento.getPreco();
+        if (this.mouse != null){
+            total += this.mouse.getPreco();
+        }
+        if (this.fone != null){
+            total += this.fone.getPreco();
+        }
+        if (this.monitor[0] != null){
+            total += this.monitor[0].getPreco();
+        }
+        if (this.monitor[1] != null){
+            total += this.monitor[1].getPreco();
+        }
+        if (this.teclado != null){
+            total += this.teclado.getPreco();
+        }
         return total;
     }
     
@@ -193,9 +207,32 @@ public class Pedido {
     
 
     public void notaFiscal(int formaPagar) {
-        System.out.println("Nota Fiscal:");
+        System.out.println("|-------------------------Nota Fiscal-------------------------|");
         System.out.println();
         System.out.println(this.processador.getNome()+" - "+this.processador.getMarca()+" = R$ "+this.processador.getPreco());
+        System.out.println(this.placaMae.getNome()+" - "+this.placaMae.getMarca()+" = R$ "+this.placaMae.getPreco());
+        System.out.println(this.memoriaRam[0].getNome()+" - "+this.memoriaRam[0].getMarca()+" = R$ "+this.memoriaRam[0].getPreco());
+        System.out.println(this.memoriaRam[1].getNome()+" - "+this.memoriaRam[1].getMarca()+" = R$ "+this.memoriaRam[1].getPreco());
+        System.out.println(this.placavideo.getNome()+" - "+this.placavideo.getMarca()+" = R$ "+this.placavideo.getPreco());
+        System.out.println(this.armazenamento.getNome()+" - "+this.armazenamento.getMarca()+" = R$ "+this.armazenamento.getPreco());
+        System.out.println(this.fonte.getNome()+" - "+this.fonte.getMarca()+" = R$ "+this.fonte.getPreco());
+        System.out.println(this.gabinete.getNome()+" - "+this.gabinete.getMarca()+" = R$ "+this.gabinete.getPreco());
+        if (this.mouse != null){
+            System.out.println(this.mouse.getNome()+" - "+this.mouse.getMarca()+" = R$ "+this.mouse.getPreco());
+        }
+        if (this.teclado != null){
+            System.out.println(this.teclado.getNome()+" - "+this.teclado.getMarca()+" = R$ "+this.teclado.getPreco());
+        }
+        if (this.fone != null){
+            System.out.println(this.fone.getNome()+" - "+this.fone.getMarca()+" = R$ "+this.fone.getPreco());
+        }
+        if (this.monitor[0] != null){
+            System.out.println(this.monitor[0].getNome()+" - "+this.monitor[0].getMarca()+" = R$ "+this.monitor[0].getPreco());
+        }
+        if (this.monitor[1] != null){
+            System.out.println(this.monitor[0].getNome()+" - "+this.monitor[0].getMarca()+" = R$ "+this.monitor[0].getPreco());
+        }
+
         double total= calculoTotal();
         
         switch (formaPagar) {
@@ -203,35 +240,35 @@ public class Pedido {
                 total= calculoDesc(); 
                 System.out.println();
                 System.out.println("Forma de pagamento: à vista");
-                System.out.println("Total com desconto: R$" + total);
+                System.out.printf("Total com desconto: R$ %.2f\n", total);
                 System.out.println();
                 break;
             case 2: 
                 System.out.println();
                 System.out.println("Forma de pagamento: cartão de crédito");
-                System.out.println("Total: R$" + total);
+                System.out.printf("Total: R$ %.2f\n", total);
                 System.out.println();
                 break;
             case 3: 
                 System.out.println();
                 System.out.println("Forma de pagamento: débito");
-                System.out.println("Total: R$" + total);
+                System.out.printf("Total: R$ %.2f\n", total);
                 System.out.println();
                 break;
             case 4: 
                 System.out.println();
                 System.out.println("Forma de pagamento: boleto");
-                System.out.println("Total: R$" + total);
+                System.out.printf("Total: R$ %.2f\n", total);
                 System.out.println();
                 break;
             case 5: 
                 System.out.println("Forma de pagamento: Pix ");
-                System.out.println("Total: R$ "+ total);
+                System.out.printf("Total: R$ %.2f\n", total);
+                System.out.println();
+                break;
             default: 
                 System.out.println("Opcao inválida, tente novamente");
         }
         System.out.println("Pagamento aprovado!");
     }
-
-
 }
