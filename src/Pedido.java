@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 public class Pedido {
     private Estoque estoque = new Estoque();
     private Mouse mouse; 
@@ -176,7 +176,31 @@ public class Pedido {
         }
     }
 
+    public void passarCartao(){
+        Scanner input = new Scanner(System.in);
+        Scanner input2 = new Scanner(System.in);
+        String inutil;
+        int inutil2;
 
+        System.out.println("Digite as informações do cartão!\n");
+        System.out.print("Numero do cartão: ");
+        inutil = input.nextLine();
+        System.out.print("Data de validade: ");
+        inutil = input.nextLine();
+        System.out.print("Código de segurança: ");
+        inutil = input.nextLine();
+        System.out.print("Nome: ");
+        inutil = input.nextLine();
+        inutil2 = 0;
+        while (inutil2 == 0){
+            System.out.print("Numero de parcelas(1-12): ");
+            inutil2 = input.nextInt();
+            if (inutil2 < 1 && inutil2 > 12){
+                inutil2 = 0;
+                System.out.print("ERRO: DIGITE UMA PARCELA VALIDA");
+            }
+        }
+    }
     
     
     public double calculoTotal() {
@@ -207,6 +231,47 @@ public class Pedido {
     
 
     public void notaFiscal(int formaPagar) {
+
+        double total= calculoTotal();
+        
+        switch (formaPagar) {
+            case 1: 
+                total= calculoDesc(); 
+                System.out.println();
+                System.out.println("Forma de pagamento: à vista");
+                System.out.printf("Total com desconto: R$ %.2f\n", total);
+                System.out.println();
+                break;
+            case 2: 
+                System.out.println();
+                System.out.println("Forma de pagamento: cartão de crédito");
+                System.out.printf("Total: R$ %.2f\n", total);
+                passarCartao();
+                System.out.println();
+                break;
+            case 3: 
+                System.out.println();
+                System.out.println("Forma de pagamento: débito");
+                System.out.printf("Total: R$ %.2f\n", total);
+                passarCartao();
+                System.out.println();
+                break;
+            case 4: 
+                System.out.println();
+                System.out.println("Forma de pagamento: boleto");
+                System.out.printf("Total: R$ %.2f\n", total);
+                System.out.println();
+                break;
+            case 5: 
+                System.out.println("Forma de pagamento: Pix ");
+                System.out.printf("Total: R$ %.2f\n", total);
+                System.out.println();
+                break;
+            default: 
+                System.out.println("Opcao inválida, tente novamente");
+        }
+        System.out.println("Pagamento aprovado!");
+
         System.out.println("|-------------------------Nota Fiscal-------------------------|");
         System.out.println();
         System.out.println(this.processador.getNome()+" - "+this.processador.getMarca()+" = R$ "+this.processador.getPreco());
@@ -232,43 +297,5 @@ public class Pedido {
         if (this.monitor[1] != null){
             System.out.println(this.monitor[0].getNome()+" - "+this.monitor[0].getMarca()+" = R$ "+this.monitor[0].getPreco());
         }
-
-        double total= calculoTotal();
-        
-        switch (formaPagar) {
-            case 1: 
-                total= calculoDesc(); 
-                System.out.println();
-                System.out.println("Forma de pagamento: à vista");
-                System.out.printf("Total com desconto: R$ %.2f\n", total);
-                System.out.println();
-                break;
-            case 2: 
-                System.out.println();
-                System.out.println("Forma de pagamento: cartão de crédito");
-                System.out.printf("Total: R$ %.2f\n", total);
-                System.out.println();
-                break;
-            case 3: 
-                System.out.println();
-                System.out.println("Forma de pagamento: débito");
-                System.out.printf("Total: R$ %.2f\n", total);
-                System.out.println();
-                break;
-            case 4: 
-                System.out.println();
-                System.out.println("Forma de pagamento: boleto");
-                System.out.printf("Total: R$ %.2f\n", total);
-                System.out.println();
-                break;
-            case 5: 
-                System.out.println("Forma de pagamento: Pix ");
-                System.out.printf("Total: R$ %.2f\n", total);
-                System.out.println();
-                break;
-            default: 
-                System.out.println("Opcao inválida, tente novamente");
-        }
-        System.out.println("Pagamento aprovado!");
     }
 }
