@@ -180,6 +180,7 @@ public class Pedido {
         Scanner input = new Scanner(System.in);
         Scanner input2 = new Scanner(System.in);
         String inutil;
+
         int inutil2;
 
         System.out.println("Digite as informações do cartão!\n");
@@ -199,7 +200,11 @@ public class Pedido {
                 inutil2 = 0;
                 System.out.print("ERRO: DIGITE UMA PARCELA VALIDA");
             }
+            System.out.printf("Valor da parcela: R$ %.2f ",calcularParcela(inutil2, calculoTotal()));
+
+        
         }
+        
     }
     
     
@@ -229,6 +234,11 @@ public class Pedido {
         return calculoTotal()*0.9;
     }
     
+    private double calcularParcela(int parcelas,double total){
+        double valorParcela = (double) total / parcelas;
+        return valorParcela;
+        
+    }
 
     public void notaFiscal(int formaPagar) {
 
