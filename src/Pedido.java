@@ -234,7 +234,7 @@ public class Pedido {
         return calculoTotal()*0.9;
     }
     
-    private double calcularParcela(int parcelas,double total){
+    public  double calcularParcela(int parcelas,double total){
         double valorParcela = (double) total / parcelas;
         return valorParcela;
         
