@@ -176,12 +176,12 @@ public class Pedido {
         }
     }
 
-    public void passarCartao(){
+    public void passarCartao(int formaPagar){
         Scanner input = new Scanner(System.in);
         Scanner input2 = new Scanner(System.in);
-        String inutil;
+        String inutil; //para receber infos
 
-        int inutil2;
+        int inutil2 = 0; //para entrar no loop
 
         System.out.println("Digite as informações do cartão!\n");
         System.out.print("Numero do cartão: ");
@@ -192,19 +192,17 @@ public class Pedido {
         inutil = input.nextLine();
         System.out.print("Nome: ");
         inutil = input.nextLine();
-        inutil2 = 0;
-        while (inutil2 == 0){
-            System.out.print("Numero de parcelas(1-12): ");
-            inutil2 = input.nextInt();
-            if (inutil2 < 1 && inutil2 > 12){
-                inutil2 = 0;
-                System.out.print("ERRO: DIGITE UMA PARCELA VALIDA");
+            if(formaPagar == 2){ //credito
+                while (inutil2 == 0){
+                    System.out.print("Numero de parcelas(1-12): ");
+                    inutil2 = input.nextInt();
+                    if (inutil2 < 1 || inutil2 > 12){
+                        inutil2 = 0;
+                        System.out.println("ERRO: DIGITE UMA PARCELA VALIDA\n");
+                    }
+                }
+                System.out.printf("Valor da parcela: R$ %.2f \n",calcularParcela(inutil2, calculoTotal()));
             }
-            System.out.printf("Valor da parcela: R$ %.2f ",calcularParcela(inutil2, calculoTotal()));
-
-        
-        }
-        
     }
     
     
@@ -234,7 +232,7 @@ public class Pedido {
         return calculoTotal()*0.9;
     }
     
-    public  double calcularParcela(int parcelas,double total){
+    private double calcularParcela(int parcelas,double total){
         double valorParcela = (double) total / parcelas;
         return valorParcela;
         
@@ -256,15 +254,17 @@ public class Pedido {
                 System.out.println();
                 System.out.println("Forma de pagamento: cartão de crédito");
                 System.out.printf("Total: R$ %.2f\n", total);
-                passarCartao();
+                passarCartao(formaPagar); //pagar no credito(2)
                 System.out.println();
+                System.out.printf("Total: R$ %.2f\n", total);
                 break;
             case 3: 
                 System.out.println();
                 System.out.println("Forma de pagamento: débito");
                 System.out.printf("Total: R$ %.2f\n", total);
-                passarCartao();
+                passarCartao(formaPagar); //pagar no debito(3)
                 System.out.println();
+                System.out.printf("Total: R$ %.2f\n", total);
                 break;
             case 4: 
                 System.out.println();
