@@ -18,7 +18,7 @@ public class Main {
 
 
     public static void Inicio(){
-        System.out.print("|--------------Bem vindo a GalegoHardware--------------| \n(a maior loja de tecnologia da américa latina)\n");
+        System.out.print("|--------------Bem vindo a Galego Hardware's--------------| \n(a maior loja de tecnologia da américa latina)\n".toUpperCase());
         Pause();
         System.out.println("Monte o seu PC!");        
     }
