@@ -165,6 +165,7 @@ public class Estoque {
     public void catalogoPlacasDeVideo() {
         System.out.println("Placas De Vídeo:");
         System.out.println();
+        
         for (int i = 0; i < placaDeVideo.length; i++) {
             System.out.println(
                 i+1+" - "+ this.placaDeVideo[i].getNome() + " - " + this.placaDeVideo[i].getMarca() + " = " + this.placaDeVideo[i].getPreco());

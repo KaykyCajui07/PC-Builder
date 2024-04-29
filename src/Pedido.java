@@ -14,6 +14,11 @@ public class Pedido {
     private Armazenamento armazenamento;
 
 
+    
+    public Pedido() {
+      
+    }
+
     public Estoque getEstoque() {
         return estoque;
     }
@@ -58,16 +63,7 @@ public class Pedido {
         return processador;
     }
 
-    public int getCont() {
-        return cont;
-    }
 
-
-    protected int cont = 0;
-
-    public Pedido() {
-      
-    }
 
     public void addArmazenamento(int num){
         if(this.armazenamento == null){
