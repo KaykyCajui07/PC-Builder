@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import java.time.Year;
+import java.time.YearMonth;
+
 public class Pedido {
     private Estoque estoque = new Estoque();
     private Mouse mouse; 
@@ -174,46 +177,74 @@ public class Pedido {
 
     public void passarCartao(int formaPagar){
         Scanner input = new Scanner(System.in);
-        Scanner s = new Scanner(System.in);
-        String nome;
-        int numeroCartao,mes,ano,codigoSeguranca;
-
-
-        int quantParcela = 0; //para entrar no loop
-
+        Scanner input2 = new Scanner(System.in);
+        String numeroCartao, cvc, nome; //para receber infos do cartao
+        int mesCartao, anoCartao;
+        int opcao = 0; //para entrar no loop
+        YearMonth mesEAnoAtual = YearMonth.now();// Obtém o mês e o ano atuais do sistema
+        int ano = mesEAnoAtual.getYear();
+        int mes = mesEAnoAtual.getMonthValue();
         System.out.println("Digite as informações do cartão!\n");
-        System.out.print("Numero do cartão: ");
-        numeroCartao = input.nextInt();
-        System.out.println("Data de validade: ");
-        System.out.println("Mês: ");
-        mes = input.nextInt();
-        while(mes > 12 || mes < 0){
-            System.out.println("Data Invalida!");
-            System.out.println("Informe novamente;");
-            mes =input.nextInt();
-        }
-        System.out.println("Ano: ");
-        ano = input.nextInt();
-        while(ano <= 2024){
-            System.out.println("Data Invalida!");
-            System.out.println("Informe novamente;");
-            ano =input.nextInt();
-        }
-        System.out.print("Código de segurança: ");
-        codigoSeguranca = input.nextInt();
-        System.out.print("Nome: ");
-        nome = s.nextLine();
-            if(formaPagar == 2){ //credito
-                while (quantParcela == 0){
-                    System.out.print("Numero de parcelas(1-12): ");
-                    quantParcela = input.nextInt();
-                    if (quantParcela < 1 || quantParcela > 12){
-                        quantParcela = 0;
-                        System.out.println("ERRO: DIGITE UMA PARCELA VALIDA\n");
-                    }
-                }
-                System.out.printf("Valor da parcela: R$ %.2f \n",calcularParcela(quantParcela, calculoTotal()));
+        while(opcao == 0){
+            System.out.print("Numero do cartão: ");
+            numeroCartao = input.nextLine();
+            if (numeroCartao.length() == 16)
+                opcao = 1;
+            else{
+                System.out.println("ERRO: NUMERO OU TAMANHO INVÁLIDO");
+                System.out.println("*É ESPERADO UM VALOR DE 16 CARACTERES*\n");
             }
+        }
+
+        opcao = 0;
+        while(opcao == 0){
+            System.out.println("--DATA de validade-- \n");
+            System.out.print("Ano: ");
+            anoCartao = input2.nextInt();
+            System.out.print("Mes: ");
+            mesCartao = input2.nextInt();
+            if(anoCartao > ano && (mesCartao >= 1 && mesCartao <= 12))
+                opcao = 1;
+            else if(anoCartao == ano && (mesCartao >= mes && mesCartao <= 12))
+                opcao = 1;
+            else
+                System.out.println("ERRO: DATA INVÁLIDA");
+        }
+
+        opcao = 0;
+        while(opcao == 0){
+            System.out.print("Código de segurança: ");
+            cvc = input.nextLine();
+            if (cvc.length() == 3)
+                opcao = 1;
+            else
+                System.out.println("ERRO: CVC OU TAMANHO INVÁLIDO");
+        }
+
+        opcao = 0;
+        while(opcao == 0){
+            System.out.print("Nome: ");
+            nome = input.nextLine();
+            if (nome.length() > 0 && nome.length() <= 30)
+                opcao = 1;
+            else
+                System.out.println("ERRO: NOME OU TAMANHO INVÁLIDO");
+        }
+        
+        opcao = 0;
+        if(formaPagar == 2){
+            while (opcao == 0){
+                System.out.print("Numero de parcelas(1-12): ");
+                opcao = input.nextInt();
+                if (opcao < 1 || opcao > 12){
+                    opcao = 0;
+                    System.out.println("ERRO: DIGITE UMA PARCELA VALIDA\n");
+                }
+            }
+            System.out.printf("Valor da parcela: R$ %.2f \n",calcularParcela(opcao, calculoTotal()));
+            input.close();
+            input2.close();
+        }
     }
     
     
@@ -243,7 +274,7 @@ public class Pedido {
         return calculoTotal()*0.9;
     }
     
-    public double calcularParcela(int parcelas,double total){
+    private double calcularParcela(int parcelas,double total){
         double valorParcela = (double) total / parcelas;
         return valorParcela;
         
@@ -255,11 +286,10 @@ public class Pedido {
         
         switch (formaPagar) {
             case 1: 
-               double total2= calculoDesc(); 
+                total= calculoDesc(); 
                 System.out.println();
                 System.out.println("Forma de pagamento: à vista");
-                System.out.printf("Total sem desconto: R$ %.2f\n",total);
-                System.out.printf("Total com desconto: R$ %.2f\n", total2);
+                System.out.printf("Total com desconto: R$ %.2f\n", total);
                 System.out.println();
                 break;
             case 2: 
