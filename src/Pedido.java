@@ -174,30 +174,45 @@ public class Pedido {
 
     public void passarCartao(int formaPagar){
         Scanner input = new Scanner(System.in);
-        Scanner input2 = new Scanner(System.in);
-        String inutil; //para receber infos
+        Scanner s = new Scanner(System.in);
+        String nome;
+        int numeroCartao,mes,ano,codigoSeguranca;
 
-        int inutil2 = 0; //para entrar no loop
+
+        int quantParcela = 0; //para entrar no loop
 
         System.out.println("Digite as informações do cartão!\n");
         System.out.print("Numero do cartão: ");
-        inutil = input.nextLine();
-        System.out.print("Data de validade: ");
-        inutil = input.nextLine();
+        numeroCartao = input.nextInt();
+        System.out.println("Data de validade: ");
+        System.out.println("Mês: ");
+        mes = input.nextInt();
+        while(mes > 12 || mes < 0){
+            System.out.println("Data Invalida!");
+            System.out.println("Informe novamente;");
+            mes =input.nextInt();
+        }
+        System.out.println("Ano: ");
+        ano = input.nextInt();
+        while(ano <= 2024){
+            System.out.println("Data Invalida!");
+            System.out.println("Informe novamente;");
+            ano =input.nextInt();
+        }
         System.out.print("Código de segurança: ");
-        inutil = input.nextLine();
+        codigoSeguranca = input.nextInt();
         System.out.print("Nome: ");
-        inutil = input.nextLine();
+        nome = s.nextLine();
             if(formaPagar == 2){ //credito
-                while (inutil2 == 0){
+                while (quantParcela == 0){
                     System.out.print("Numero de parcelas(1-12): ");
-                    inutil2 = input.nextInt();
-                    if (inutil2 < 1 || inutil2 > 12){
-                        inutil2 = 0;
+                    quantParcela = input.nextInt();
+                    if (quantParcela < 1 || quantParcela > 12){
+                        quantParcela = 0;
                         System.out.println("ERRO: DIGITE UMA PARCELA VALIDA\n");
                     }
                 }
-                System.out.printf("Valor da parcela: R$ %.2f \n",calcularParcela(inutil2, calculoTotal()));
+                System.out.printf("Valor da parcela: R$ %.2f \n",calcularParcela(quantParcela, calculoTotal()));
             }
     }
     
@@ -228,7 +243,7 @@ public class Pedido {
         return calculoTotal()*0.9;
     }
     
-    private double calcularParcela(int parcelas,double total){
+    public double calcularParcela(int parcelas,double total){
         double valorParcela = (double) total / parcelas;
         return valorParcela;
         
@@ -240,10 +255,11 @@ public class Pedido {
         
         switch (formaPagar) {
             case 1: 
-                total= calculoDesc(); 
+               double total2= calculoDesc(); 
                 System.out.println();
                 System.out.println("Forma de pagamento: à vista");
-                System.out.printf("Total com desconto: R$ %.2f\n", total);
+                System.out.printf("Total sem desconto: R$ %.2f\n",total);
+                System.out.printf("Total com desconto: R$ %.2f\n", total2);
                 System.out.println();
                 break;
             case 2: 
