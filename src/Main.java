@@ -1,10 +1,28 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 
     public static void Clear(){
-        for (int i=0; i <= 15; i++){
-            System.out.println();
+        try{
+            String operadorSystem = System.getProperty("os.name");
+            if(operadorSystem.contains("Windows")){
+                ProcessBuilder pb = new ProcessBuilder("cmd","/c","cls");
+                Process iniciarProcesso = pb.inheritIO().start();
+                iniciarProcesso.waitFor();
+
+            }
+            else{
+                ProcessBuilder pb = new ProcessBuilder("clear");
+                Process iniciarProcess = pb.inheritIO().start();
+
+                iniciarProcess.waitFor();
+            
+            }
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage()); 
+
         }
     }
 
