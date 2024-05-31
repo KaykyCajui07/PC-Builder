@@ -31,7 +31,7 @@ public class Estoque {
         new PlacaVideo("Radeon RX 580", "Sapphire", 559.00,"12GB")        
     };
     
-    private Armazenamento[] armazenamento = {
+    private  Armazenamento[] armazenamento = {
         new Armazenamento("SSD", "Samsung",459.00,256,"970 EVO Plus"),
         new Armazenamento("HDD", "Western Digital",229.99,1000,"HD Blue")
     };

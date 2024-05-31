@@ -3,18 +3,18 @@ import java.time.Year;
 import java.time.YearMonth;
 
 public class Pedido {
-    private Estoque estoque = new Estoque();
-    private Mouse mouse; 
-    private PlacaVideo placavideo; 
+    private static Estoque estoque = new Estoque();
+    private  Mouse mouse; 
+    private  PlacaVideo placavideo; 
     private Teclado teclado; 
     private Ram memoriaRam[] = new Ram[2]; 
     private Gabinete gabinete; 
     private FonteAlimentacao fonte;
     private Monitor monitor[] = new Monitor[2];
-    private Fone fone;
+    private  Fone fone;
     private PlacaMae placaMae; 
     private Processador processador; 
-    private Armazenamento armazenamento;
+    private  Armazenamento armazenamento;
 
 
     
@@ -68,9 +68,9 @@ public class Pedido {
 
 
 
-    public void addArmazenamento(int num){
-        if(this.armazenamento == null){
-            this.armazenamento = estoque.getArmazenamento(num-1);
+    public  void addArmazenamento(int num){
+        if(armazenamento == null){
+            armazenamento = Estoque.getArmazenamento(num-1);
         }
         else{
             System.out.println("Não foi possivel adicionar mais produtos");
@@ -108,8 +108,8 @@ public class Pedido {
     }
 
     public void addProcessador(int num){
-        if(this.processador == null){
-            this.processador = estoque.getProcessador(num-1);
+        if(processador == null){
+            processador = estoque.getProcessador(num-1);
         }
         else{
             System.out.println("Não é possivel adicionar mais produtos");
