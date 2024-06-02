@@ -3,7 +3,7 @@ import java.time.Year;
 import java.time.YearMonth;
 
 public class Pedido {
-    private static Estoque estoque = new Estoque();
+    private  Estoque estoque = new Estoque();
     private  Mouse mouse; 
     private  PlacaVideo placavideo; 
     private Teclado teclado; 
@@ -70,7 +70,7 @@ public class Pedido {
 
     public  void addArmazenamento(int num){
         if(armazenamento == null){
-            armazenamento = Estoque.getArmazenamento(num-1);
+            armazenamento = estoque.getArmazenamento(num-1);
         }
         else{
             System.out.println("Não foi possivel adicionar mais produtos");
