@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.time.Year;
 import java.time.YearMonth;
 
-public class Pedido {
+public class Pedido{
     private  Estoque estoque = new Estoque();
     private  Mouse mouse; 
     private  PlacaVideo placavideo; 
@@ -15,11 +15,13 @@ public class Pedido {
     private PlacaMae placaMae; 
     private Processador processador; 
     private  Armazenamento armazenamento;
+    private Validarcartao validador = new Validarcartao();
 
 
     
     public Pedido() {
       
+
     }
 
     public Estoque getEstoque() {
@@ -175,77 +177,63 @@ public class Pedido {
         }
     }
 
-    public void passarCartao(int formaPagar){
+    public void passarCartao(int formaPagar) {
         Scanner input = new Scanner(System.in);
-        Scanner input2 = new Scanner(System.in);
-        String numeroCartao, cvc, nome; //para receber infos do cartao
+        String numeroCartao, cvc, nome;
         int mesCartao, anoCartao;
-        int opcao = 0; //para entrar no loop
-        YearMonth mesEAnoAtual = YearMonth.now();// Obtém o mês e o ano atuais do sistema
-        int ano = mesEAnoAtual.getYear();
-        int mes = mesEAnoAtual.getMonthValue();
-        System.out.println("Digite as informações do cartão!\n");
-        while(opcao == 0){
-            System.out.print("Numero do cartão: ");
-            numeroCartao = input.nextLine();
-            if (numeroCartao.length() == 16)
-                opcao = 1;
-            else{
-                System.out.println("ERRO: NUMERO OU TAMANHO INVÁLIDO");
-                System.out.println("*É ESPERADO UM VALOR DE 16 CARACTERES*\n");
-            }
-        }
-
-        opcao = 0;
-        while(opcao == 0){
-            System.out.println("--DATA de validade-- \n");
-            System.out.print("Ano: ");
-            anoCartao = input2.nextInt();
-            System.out.print("Mes: ");
-            mesCartao = input2.nextInt();
-            if(anoCartao > ano && (mesCartao >= 1 && mesCartao <= 12))
-                opcao = 1;
-            else if(anoCartao == ano && (mesCartao >= mes && mesCartao <= 12))
-                opcao = 1;
-            else
-                System.out.println("ERRO: DATA INVÁLIDA");
-        }
-
-        opcao = 0;
-        while(opcao == 0){
-            System.out.print("Código de segurança: ");
-            cvc = input.nextLine();
-            if (cvc.length() == 3)
-                opcao = 1;
-            else
-                System.out.println("ERRO: CVC OU TAMANHO INVÁLIDO");
-        }
-
-        opcao = 0;
-        while(opcao == 0){
-            System.out.print("Nome: ");
-            nome = input.nextLine();
-            if (nome.length() > 0 && nome.length() <= 30)
-                opcao = 1;
-            else
-                System.out.println("ERRO: NOME OU TAMANHO INVÁLIDO");
-        }
+        boolean validacao = false;
         
-        opcao = 0;
-        if(formaPagar == 2){
-            while (opcao == 0){
-                System.out.print("Numero de parcelas(1-12): ");
-                opcao = input.nextInt();
-                if (opcao < 1 || opcao > 12){
-                    opcao = 0;
-                    System.out.println("ERRO: DIGITE UMA PARCELA VALIDA\n");
+        while (!validacao) {
+            boolean numeroValido = false, cvcValido = false, nomeValido = false, dataValida = false;
+    
+            System.out.print("Digite o número do cartão (16 dígitos): ");
+            numeroCartao = input.nextLine();
+            if (validador.validarNumero(numeroCartao)) {
+                numeroValido = true;
+            } else {
+                System.out.println("Número do cartão inválido!");
+            }
+    
+            if (numeroValido) {
+                System.out.print("Digite o CVC (3 dígitos): ");
+                cvc = input.nextLine();
+                if (validador.validarCVC(cvc)) {
+                    cvcValido = true;
+                } else {
+                    System.out.println("CVC inválido!");
                 }
             }
-            System.out.printf("Valor da parcela: R$ %.2f \n",calcularParcela(opcao, calculoTotal()));
-            input.close();
-            input2.close();
+    
+            if (numeroValido && cvcValido) {
+                System.out.print("Digite o nome do titular: ");
+                nome = input.nextLine();
+                if (validador.validarNome(nome)) {
+                    nomeValido = true;
+                } else {
+                    System.out.println("Nome inválido!");
+                }
+            }
+    
+            if (numeroValido && cvcValido && nomeValido) {
+                System.out.print("Digite o mês de validade: ");
+                mesCartao = input.nextInt();
+                System.out.print("Digite o ano de validade: ");
+                anoCartao = input.nextInt();
+                input.nextLine(); 
+                if (validador.validarDataExpiracao(mesCartao, anoCartao)) {
+                    dataValida = true;
+                } else {
+                    System.out.println("Data de validade inválida!");
+                }
+            }
+    
+            if (numeroValido && cvcValido && nomeValido && dataValida) {
+                validacao = true;
+                System.out.println("Pagamento aprovado!");
+            }
         }
     }
+    
     
     
     public double calculoTotal() {
